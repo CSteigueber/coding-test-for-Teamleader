@@ -28,21 +28,71 @@ function ConvertInputToOrder($input){
 function GetProductDetailsIntoOrder($products,$order){
   foreach ($products as $product) {
     foreach ($order->items as $item) {
+      # The following if-statement is looking for the cheapest object of the category 2.
+      # Outsourcing it into another function would ease overview and maintenance.
+      # But it would reduce performance, as the same list would be itterated over again.
       if ($product->id == $item->{'product-id'}){
         $item->category=$product->category;
         $item->description=$product->description;
-      }
+      break; #avoiding that the algorithm runs through a long list of products after already matching the id from the order
+    }
+    
+  }
+}
+return $order;
+}
+
+function CountCategories($order){
+  foreach ($order->items as $item) {
+    switch ($item->category){
+      case "1": $order->cat1 += $item->quantity; break;
+      case "2": $order->cat2 += $item->quantity; break;
     }
   }
   return $order;
 }
+function discountCheapestCat1($order){
+  foreach ($order->items as $item) {
+    if ($item->category=="1" && ($item->{'unit-price'} < $order->cheapestCat1Object || $order->cheapestCat1Object==0)){
+      $order->cheapestCat1Object=$item->{'unit-price'};
+      $order->discount1=true;
+    }
+  }
+  $order->total-=$order->cheapestCat1Object*0.2;
+  return $order;
+}
+function giveFreeCat2($order) {
+  foreach ($order->items as $item) {
+    if ($item->category=="2"){
+      $item->quantity+= floor($item->quantity/5);
+      $order->discount2=true;
+    }
+  }
+  return $order;
+}
+function LoyalCustomerDiscount($order){
+  $order->total*=0.9;
+  $order->discountLoyal=true;
+  return $order;
+}
 # ---------------------------Program start ----------------------------
-# Get the json files from the database
+# Get and sort input:
 $products=json_decode(file_get_contents("../data/products.json"));
 $customers=json_decode(file_get_contents("../data/customers.json"));
-$input=json_decode(file_get_contents("../example-orders/order3.json"));
+$input=json_decode(file_get_contents("../example-orders/order2.json"));
 $order=ConvertInputToOrder($input);
+$customer=findCustomerById($customers,$order->customer_id);
 $order=GetProductDetailsIntoOrder($products,$order);
-var_dump($order);
-//$customer=findCustomerById($customers,$order->customer_id);
 
+# calculate discounts:
+$order=CountCategories($order);
+if ($order->cat1 > 1){
+  $order=discountCheapestCat1($order);
+}
+if ($order->cat2 >= 5){
+  $order=giveFreeCat2($order);
+}
+if ($customer->revenue>=1000){
+  $order=LoyalCustomerDiscount($order);
+}
+$message="You have to pay ".$order->total." EUR. You recieved";
