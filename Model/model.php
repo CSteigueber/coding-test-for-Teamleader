@@ -95,4 +95,21 @@ if ($order->cat2 >= 5){
 if ($customer->revenue>=1000){
   $order=LoyalCustomerDiscount($order);
 }
-$message="You have to pay ".$order->total." EUR. You recieved";
+$message="</br>You have to pay ".$order->total." EUR. You recieved the following discount(s): </br>";
+if ($order->discount1==true){
+   $message.="discount 1: You pay less for the cheapest item</br>";
+}                  
+if ($order->discount2==true){
+   $message.="discount 2: You get one or more additionel items free of charge</br>"; 
+}
+if ($order->discountLoyal==true){
+   $message.="Loyal discount: You pay 10% less for the entire order </br>";
+} 
+if ($order->discount1==false && $order->discount2==false && $orderLoyal==false){
+  $message.="none</br>";
+}      
+
+
+
+$message.="Thank you for your order!";
+echo $message;
