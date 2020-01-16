@@ -65,5 +65,17 @@ Class Order {
         $this->total *= 0.9;
         $this->discountLoyal = true;
     }
+    public function applyDiscounts($customer){
+        $this->CountCategories();
+        if ($this->cat1 > 1){
+            $this->discountCheapestCat1();
+        }
+        if ($this->cat2 >= 5){
+            $this->giveFreeCat2();
+        }
+        if ($customer->revenue >= 1000){
+            $this->LoyalCustomerDiscount();
+}
+    }
 
 }

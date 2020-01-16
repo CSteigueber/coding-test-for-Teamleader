@@ -31,9 +31,8 @@ function createOutput($order){
   if ($order->discount1 == false && $order->discount2 == false && $order->discountLoyal == false){
     $message .= "none</br>";
   }      
-  
+
   $message .= "Thank you for your order!";
-  
   echo $message;
 }
 
@@ -41,9 +40,9 @@ function createOutput($order){
 # Get input:
 $products = json_decode(file_get_contents("../data/products.json"));
 $customers = json_decode(file_get_contents("../data/customers.json"));
-$input = json_decode(file_get_contents("../example-orders/order1.json")); // Here you can change the order which is read.
+$input = json_decode(file_get_contents("../example-orders/order3.json")); // Here you can change the order which is read.
 
-#Built order:
+# Built order:
 $order = new Order();
 $order->ConvertInputToOrder($input);
 $order->GetProductDetailsIntoOrder($products);
@@ -51,17 +50,8 @@ $order->GetProductDetailsIntoOrder($products);
 # Built customer:
 $customer=findCustomerById($customers,$order->customer_id);
 
-# calculate discounts:
-$order->CountCategories();
-if ($order->cat1 > 1){
-  $order->discountCheapestCat1();
-}
-if ($order->cat2 >= 5){
-  $order->giveFreeCat2();
-}
-if ($customer->revenue >= 1000){
-  $order->LoyalCustomerDiscount();
-}
+# Calculate discounts:
+$order->applyDiscounts($customer);
 
-# create the output:
+# Create the output:
 createOutput($order);
