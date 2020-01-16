@@ -1,6 +1,13 @@
+# Choice of task:
+
+I chose to work on the backend problem with the discounts.
+
 # Running the programme:
 
-To run the programme execute Model/model.php
+To run the programme please execute Model/model.php
+Which order to read is hardcoded in model.php because I didn't focus on how to recieve the order and rather coded the discount calculation.
+
+# --------------------------------------------------------------------------------------
 
 # Coding Test
 
