@@ -1,6 +1,5 @@
 <?php
 #--------------------------require-------------------------------------
-require 'Item.php';
 require 'Order.php';
 
 # -----------------------functions-------------------------------------
@@ -22,7 +21,7 @@ function findCustomerById($customers,$id){
 # Get input:
 $products=json_decode(file_get_contents("../data/products.json"));
 $customers=json_decode(file_get_contents("../data/customers.json"));
-$input=json_decode(file_get_contents("../example-orders/order2.json"));
+$input=json_decode(file_get_contents("../example-orders/order3.json"));
 
 $order= new Order();
 $order->ConvertInputToOrder($input);
