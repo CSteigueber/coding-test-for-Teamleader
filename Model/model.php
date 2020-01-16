@@ -21,7 +21,7 @@ function findCustomerById($customers,$id){
 # Get input:
 $products = json_decode(file_get_contents("../data/products.json"));
 $customers = json_decode(file_get_contents("../data/customers.json"));
-$input = json_decode(file_get_contents("../example-orders/order3.json")); // Here you can change the order which is read.
+$input = json_decode(file_get_contents("../example-orders/order2.json")); // Here you can change the order which is read.
 
 #Built order:
 $order = new Order();
