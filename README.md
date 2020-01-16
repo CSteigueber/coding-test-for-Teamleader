@@ -24,6 +24,8 @@ At last, an output message is created to communicate the total amount the custom
 I created an Order class to increase readability, maintenance, and reusability of the code.
 All functions concerning the Order object are included as methods. Again, I hope this eases readability, maintenance and reusability.
 
+# 
+
 Below is the original readme.md file provided by [Teamleader](https://www.teamleader.eu/company/engineering) (with minor changes)
 # ------------------------------------------------------
 
