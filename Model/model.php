@@ -23,6 +23,7 @@ $products = json_decode(file_get_contents("../data/products.json"));
 $customers = json_decode(file_get_contents("../data/customers.json"));
 $input = json_decode(file_get_contents("../example-orders/order3.json"));
 
+#Built order:
 $order = new Order();
 $order->ConvertInputToOrder($input);
 $customer=findCustomerById($customers,$order->customer_id);
@@ -42,6 +43,7 @@ if ($customer->revenue >= 1000){
 
 # create the output:
 $message = "</br>You have to pay ".round($order->total,2)." EUR. You recieved the following discount(s): </br>";
+
 if ($order->discount1 == true){
    $message .= "discount 1: You pay less for the cheapest item</br>";
 }                  
@@ -56,4 +58,5 @@ if ($order->discount1 == false && $order->discount2 == false && $orderLoyal == f
 }      
 
 $message .= "Thank you for your order!";
+
 echo $message;
