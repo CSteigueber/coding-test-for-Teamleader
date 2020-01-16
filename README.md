@@ -1,6 +1,6 @@
 # Coding Test
 
-Do you want to join the engineering team at [Teamleader](https://www.teamleader.eu/company/engineering)?
+Do you want to join the engineering team at [Teamleader](https://www.teamleader.eu/company/engineering)? Yes I do!
 
 We have created this exercise in order to gain insights into your development skills.
 
@@ -10,7 +10,7 @@ We have several problems to solve. Our recruiter would have normally told you wh
 
 You are free to use whatever technologies you want, unless instructed otherwise.
 
-- [Problem 1 : Discounts](./1-discounts.md)
+- [Problem 1 : Discounts](./1-discounts.md)               I chose this problem 
 - [Problem 2 : Ordering](./2-ordering.md)
 - [Problem 3 : Local development](./3-local-development.md)
 
