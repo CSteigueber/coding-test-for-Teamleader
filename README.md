@@ -7,6 +7,18 @@ I chose to work on the backend problem with the discounts.
 To run the programme please execute Model/model.php
 Which order to read is hardcoded in model.php because I didn't focus on how to recieve the order and rather coded the discount calculation.
 
+# Reasoning of the programme:
+
+First the .json files are read into the programme to get the input. The example-order is read into the $input variable.
+In the next step an Order object is created and fed with the input data. Into this object data from the products.json are loaded to include all nesseccary data for the order.
+Next, a customer object is built from the customer matching his id with the customer-id from the order.
+In the following step, the order is checked for available discounts, which are applied if reasonable.
+At last, an output message is created to communicate the total amount the customer has to pay, as well as information about the applied discounts.  
+
+# Further reasoning:
+
+I created an Order class to increase readability, maintenance, and reusability of the code.
+All functions concerning the Order object are included as methods, again this eases readability, maintenance and reusability.
 
 Below is the original readme.md file provided by [Teamleader](https://www.teamleader.eu/company/engineering) (with minor changes)
 # ------------------------------------------------------
