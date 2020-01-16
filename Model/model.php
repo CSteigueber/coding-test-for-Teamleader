@@ -41,12 +41,12 @@ $products = json_decode(file_get_contents("../data/products.json"));
 $customers = json_decode(file_get_contents("../data/customers.json"));
 $input = json_decode(file_get_contents("../example-orders/order2.json")); // Here you can change the order which is read.
 
-# Built order:
+# Build order:
 $order = new Order();
 $order->ConvertInputToOrder($input);
 $order->GetProductDetailsIntoOrder($products);
 
-# Built customer:
+# Build customer:
 $customer=findCustomerById($customers,$order->customer_id);
 
 # Calculate discounts:
