@@ -18,15 +18,19 @@ Class Order {
       }
       
     public function GetProductDetailsIntoOrder($products){
+      $finish=false;
         foreach ($products as $product) {
           foreach ($this->items as $item) {
             if ($product->id == $item->{'product-id'}){
               $item->category = $product->category;
               $item->description = $product->description;
-            break; #avoiding that the algorithm runs through a long list of products after already matching the id from the order
+              $finish=true;
+            break; #avoiding continuation of foreach loop after a match
             }
-          
           }
+          if ($finish){
+            break; #avoiding continuation of foreach loop after a match
+          }  
         }
       }
       
