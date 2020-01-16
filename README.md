@@ -1,3 +1,7 @@
+# Running the programme:
+
+To run the programme execute Model/model.php
+
 # Coding Test
 
 Do you want to join the engineering team at [Teamleader](https://www.teamleader.eu/company/engineering)? Yes I do!
