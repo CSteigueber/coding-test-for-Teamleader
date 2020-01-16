@@ -26,8 +26,10 @@ $input = json_decode(file_get_contents("../example-orders/order3.json")); // Her
 #Built order:
 $order = new Order();
 $order->ConvertInputToOrder($input);
-$customer=findCustomerById($customers,$order->customer_id);
 $order->GetProductDetailsIntoOrder($products);
+
+# Built customer:
+$customer=findCustomerById($customers,$order->customer_id);
 
 # calculate discounts:
 $order->CountCategories();
