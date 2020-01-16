@@ -20,17 +20,14 @@ Class Order {
     public function GetProductDetailsIntoOrder($products){
         foreach ($products as $product) {
           foreach ($this->items as $item) {
-            # The following if-statement is looking for the cheapest object of the category 2.
-            # Outsourcing it into another function would ease overview and maintenance.
-            # But it would reduce performance, as the same list would be itterated over again.
             if ($product->id == $item->{'product-id'}){
               $item->category = $product->category;
               $item->description = $product->description;
-            break; #avoiding that the algorithm runs through a long list of products after already matching the id from the this
-          }
+            break; #avoiding that the algorithm runs through a long list of products after already matching the id from the order
+            }
           
+          }
         }
-      }
       }
       
     public function CountCategories(){
