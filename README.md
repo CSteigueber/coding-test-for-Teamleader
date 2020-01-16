@@ -8,7 +8,7 @@ This repository was created within 24 hours.
 
 # Running the program:
 
-To run the program please execute Model/model.php
+To run the program please execute Model/model.php.
 Which order to read is hardcoded in model.php because I didn't focus on how to receive the order and rather coded the discount calculation.
 
 # Reasoning of the program:
