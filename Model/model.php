@@ -1,34 +1,34 @@
 <?php
+//echo php_ini_loaded_file();
+// ini_set('display_startup_errors', 1);
+// ini_set('display_errors', 1);
+// error_reporting(-1);
 #--------------------------requirements-------------------------------------
 require 'Order.php';
 
 # -----------------------functions-------------------------------------
-function findCustomerById($customers,$id){
+function findCustomerById(array $customers,int $id) {
   foreach ($customers as $customer) {
     if ($customer->id == $id) 
     {
       return $customer;
-     }
-    else
-    {
-      continue;
-    }      
+     }  
   }
 }
 
 function createOutput($order){
-  $message = "</br>You have to pay ".round($order->total,2)." EUR. You recieved the following discount(s): </br>";
+  $message = "</br>You have to pay ".round($order->getTotal(),2)." EUR. You recieved the following discount(s): </br>";
 
-  if ($order->discount1){
+  if ($order->getDiscount1()){
      $message .= "discount 1: You pay less for the cheapest item</br>";
   }                  
-  if ($order->discount2){
+  if ($order->getDiscount2()){
      $message .= "discount 2: You get one or more additionel items free of charge</br>"; 
   }
-  if ($order->discountLoyal){
+  if ($order->getDiscountLoyal()){
      $message .= "Loyal discount: You pay 10% less for the entire order </br>";
   } 
-  if (!$order->discount1 && !$order->discount2 && !$order->discountLoyal){
+  if (!$order->getDiscount1() && !$order->getDiscount2() && !$order->getDiscountLoyal()){
     $message .= "none</br>";
   }       
   $message .= "Thank you for your order!";
@@ -47,7 +47,7 @@ $order->ConvertInputToOrder($input);
 $order->GetProductDetailsIntoOrder($products);
 
 # Build customer:
-$customer=findCustomerById($customers,$order->customer_id);
+$customer=findCustomerById($customers,$order->getCustomer_id());
 
 # Calculate discounts:
 $order->applyDiscounts($customer);
