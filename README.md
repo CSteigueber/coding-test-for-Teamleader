@@ -8,9 +8,6 @@ I chose to work on the backend problem with the discounts.
  * 16.01.2020 => First upload of the repository, as deadline was met
  * 15.01.2020 => Task was appointed
 
-# Time investment:
-
-This repository was created within 24 hours.
 
 # Running the program:
 
