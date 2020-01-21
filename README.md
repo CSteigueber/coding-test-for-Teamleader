@@ -4,9 +4,9 @@ I chose to work on the backend problem with the discounts.
 
 # Folder history:
  
- 21.01.2020 => Improved OOP (public properties made private in class Order) after feedback from coaches
- 16.01.2020 => First upload of the repository, as deadline was met
- 15.01.2020 => Task was appointed
+  21.01.2020 => Improved OOP (public properties made private in class Order) after feedback from coaches
+  16.01.2020 => First upload of the repository, as deadline was met
+  15.01.2020 => Task was appointed
 
 # Time investment:
 
